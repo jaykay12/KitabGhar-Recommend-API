@@ -26,7 +26,7 @@ class PopularityRecommenderSales:
     def generateRecommendations(self):
         finalRecommendations = []
         for i,book in enumerate(self.purchaseBooksCounter):
-            if i>7:
+            if i>5:
                 break
             finalRecommendations.append(book[1])
         
@@ -57,7 +57,7 @@ class PopularityRecommenderRatings:
     def generateRecommendations(self):
         finalRecommendations = []
         for i,book in enumerate(self.ratingCalculatorBooks):
-            if i>7:
+            if i>5:
                 break
             finalRecommendations.append(book[1])
 
@@ -114,7 +114,7 @@ class ItemSimilarityRecommender:
         finalRecommendations = []
         booksRecommenderCounter = 0
         for entry in Totalrecommendations:
-            if booksRecommenderCounter>=23:
+            if booksRecommenderCounter>=18:
                 break
                 
             if entry[1] != 1 and entry[0] not in self.alreadyRecommended:
