@@ -25,6 +25,6 @@ export DATABASE="kitabghar"
 
 **Step 6:** Set the environment variables using `source ./development.env`
 
-**Step 7:** Run the API Service using `cd api` and `python3 app.py`
+**Step 7:** Check if API Service is running normally using `pytest` and check if all 3 test passes.
 
-**Step 8:** Check if API Service is running normally using `python3 test.py`
+**Step 8:** Run the API Service using `cd api` and `python3 app.py`
