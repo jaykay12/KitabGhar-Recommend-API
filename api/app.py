@@ -19,11 +19,11 @@ def getSalesRecommendations():
 	try:
 			recommendations = popRecomSales.getRecommendations()
 			response["recommendations"] = recommendations
-			response["message"] = "Retrieved Recommendations"
+			response["message"] = "Retrieved Recommendations based on top sales"
 			response["success"] = True
 	except Exception as e:
 		response["success"] = False
-		response["message"] = "No Recommendations Found!"
+		response["message"] = "No Recommendations Found based on top sales!"
 	finally:
 		return jsonify(**response)
 
@@ -34,11 +34,11 @@ def getRatingsRecommendations():
 	try:
 			recommendations = popRecomRatings.getRecommendations()
 			response["recommendations"] = recommendations
-			response["message"] = "Retrieved Recommendations"
+			response["message"] = "Retrieved Recommendations based on top ratings"
 			response["success"] = True
 	except Exception as e:
 		response["success"] = False
-		response["message"] = "No Recommendations Found!"
+		response["message"] = "No Recommendations Found based on top ratings!"
 	finally:
 		return jsonify(**response)
 
@@ -48,11 +48,11 @@ def getItemBasedRecommendations(userid):
 	try:
 			recommendations = itemCFRecom.getRecommendations(userid)
 			response["recommendations"] = recommendations
-			response["message"] = "Retrieved Recommendations"
+			response["message"] = "Retrieved Recommendations for the userid: "+str(userid)
 			response["success"] = True
 	except Exception as e:
 		response["success"] = False
-		response["message"] = "No Recommendations Found!"
+		response["message"] = "No Recommendations Found for the userid: "+str(userid)
 	finally:
 		return jsonify(**response)
 

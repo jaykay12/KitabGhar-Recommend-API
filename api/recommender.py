@@ -29,8 +29,9 @@ class PopularityRecommenderSales:
             if i>5:
                 break
             finalRecommendations.append(book[1])
-        
+
         print("Generated: Popular Recommendations on Sales!")
+        print(finalRecommendations)
         return finalRecommendations
 
     def getRecommendations(self):
@@ -50,7 +51,7 @@ class PopularityRecommenderRatings:
         for row in cur.fetchall():
             normalizedRating = round((int(row[1])/int(row[2])),2)
             self.ratingCalculatorBooks.append((normalizedRating, row[0], row[2]))
-            
+
         self.ratingCalculatorBooks.sort(reverse = True, key = self.firstElement)
         print("Done: Rating Data Gathering from Database!")
 
@@ -62,6 +63,7 @@ class PopularityRecommenderRatings:
             finalRecommendations.append(book[1])
 
         print("Generated: Popular Recommendations on Ratings!")
+        print(finalRecommendations)
         return finalRecommendations
 
     def getRecommendations(self):
@@ -92,7 +94,7 @@ class ItemSimilarityRecommender:
 
         print("Done: Retrived Current Books of User!")
         print(self.alreadyBooksRead)
-    
+
     def generateMatrices(self):
         self.generateHashes()
         retrieveOBJ = dataprovider.DynamicRecommendations()
@@ -100,7 +102,7 @@ class ItemSimilarityRecommender:
         retrieveOBJ.getDataMatrix()
         self.itemSimilarityMatrix = retrieveOBJ.getSimilarityMatrix()
         print("Generated: Matrices!")
-                
+
 
     def generateRecommendations(self, userid):
         Totalrecommendations = []
@@ -116,12 +118,12 @@ class ItemSimilarityRecommender:
         for entry in Totalrecommendations:
             if booksRecommenderCounter>=18:
                 break
-                
+
             if entry[1] != 1 and entry[0] not in self.alreadyRecommended:
                 finalRecommendations.append(entry[0])
                 self.alreadyRecommended[entry[0]] = True
                 booksRecommenderCounter += 1
-                
+
         print("Generated: Item-Item Similarity Recommendations")
         return finalRecommendations
 
